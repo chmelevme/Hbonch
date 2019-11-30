@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
-from webapp.models import User
+from webapp.models import User, Group
 from flask_login import current_user
 
 
@@ -29,3 +29,13 @@ class change_mail(FlaskForm):
         user = User.query.filter_by(email=mail.data).first()
         if user is not None:
             raise ValidationError('Данная почта уже зарегистрированна')
+
+
+class create_group(FlaskForm):
+    name = StringField('Введите название', validators=[DataRequired()])
+    submit = SubmitField('Создать')
+
+    def validate_name(self, name):
+        name = Group.query.filter_by(name=name.data)
+        if name is not None:
+            raise ValidationError('Это название уже занято')

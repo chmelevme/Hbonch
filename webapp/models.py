@@ -2,6 +2,9 @@ from webapp import db
 from webapp import login
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
+import jwt
+from config import config
+from datetime import datetime, timedelta
 
 
 @login.user_loader
@@ -29,7 +32,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(30), unique=True)
     deadline_statuses = db.relationship('Deadline_status')
     groups = db.relationship('Group', secondary=members,
-                             backref=db.backref('members'))
+                             backref=db.backref('members', lazy='dynamic'), lazy='dynamic')
     self_group = db.relationship('Group', secondary=members, uselist=False)
 
     def set_password(self, password):
@@ -43,6 +46,20 @@ class Group(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(20), nullable=False, unique=True)
     deadlines = db.relationship('Deadline', backref=db.backref('group', uselist=False), lazy='dynamic')
+    invite_link = db.Column(db.String, unique=True)
+
+    def create_link(self):
+        now = datetime.utcnow()
+        self.invite_link = jwt.encode({'id': str(self.id), 'exp': now + timedelta(minutes=10)}, config.SECRET_KEY,
+                                      algorithm='HS256').decode('utf-8')
+
+    @staticmethod
+    def verify_invite_link(token):
+        try:
+            id = jwt.decode(token, config.SECRET_KEY, algorithms='HS256')['id']
+        except:
+            return
+        return Group.query.get(id)
 
 
 class Deadline(db.Model):
