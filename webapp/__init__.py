@@ -17,6 +17,8 @@ def create_app(app_config=config):
     login.init_app(app)
     from auth import routes
     app.register_blueprint(routes.auth)
+    from user_profile import routes
+    app.register_blueprint(routes.user_profile)
     from main.routes import main
     app.register_blueprint(main)
     from webapp.models import User, Deadline, Level, Group, Deadline_status
