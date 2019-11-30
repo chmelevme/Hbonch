@@ -15,4 +15,5 @@ def create_app(app_config=config):
     migrate.init_app(app, db)
     login.init_app(app)
 
+
     return app
