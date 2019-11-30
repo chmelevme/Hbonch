@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,800,800i&display=swap');
+.bodyc{
+    display: flex;
+}
+
+body{
+    background-color: #404040;
+}
+
+.remind{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 37px;
+    color: #91A2FF;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    margin-top: 37px;
+}
+
+.register{
+    border: 5px solid #7987FF;
+    box-sizing: border-box;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0);
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+    color: #F2F2F2;
+}
+
+.enter{
+    width: 200px;
+    height: 60px;
+    background-color: #91A2FF;
+    border: 1px solid #5873FF;
+    box-sizing: border-box;
+    border-radius: 15px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 44px;
+    color: #FFFFFF;
+}
+
+.email{
+    margin-top: 29px;
+}
+
+.password{
+    margin-top: 26px;
+}
