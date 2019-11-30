@@ -15,7 +15,7 @@ class register_form(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Passowrd', validators=[DataRequired()])
     password2 = PasswordField('Repeat password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Login')
+    submit = SubmitField('Register')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email).first()
