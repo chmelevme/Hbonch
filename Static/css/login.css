@@ -20,7 +20,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 10px;
+    margin: 9px;
     margin-top: 37px;
 }
 
@@ -53,9 +53,13 @@ body{
 }
 
 .email{
-    margin-top: 29px;
+    margin-top: 26px;
 }
 
 .password{
     margin-top: 26px;
+}
+
+.name{
+    margin-top: 29px;
 }
