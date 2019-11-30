@@ -27,9 +27,9 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(20), unique=True)
     password = db.Column(db.String(20))
     email = db.Column(db.String(30), unique=True)
-    deadline_statuses = db.relationship('Deadline_status', lazy='joined')
-    groups = db.relationship('Group', secondary=members, lazy='subquery',
-                             backref=db.backref('members', lazy='subquery'))
+    deadline_statuses = db.relationship('Deadline_status')
+    groups = db.relationship('Group', secondary=members,
+                             backref=db.backref('members'))
     self_group = db.relationship('Group', secondary=members, uselist=False)
 
     def set_password(self, password):
@@ -51,7 +51,7 @@ class Deadline(db.Model):
     title = db.Column(db.String, nullable=False)
     level_id = db.Column(db.Integer, db.ForeignKey('level.id'))
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'))
-    users_statuses = db.relationship('Deadline_status', lazy='joined')
+    users_statuses = db.relationship('Deadline_status')
 
 
 class Level(db.Model):
