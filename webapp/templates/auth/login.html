@@ -25,10 +25,20 @@
                     </defs>
                 </svg>                        
                 <form action="">
-                    <input class="email" size="57" name="email" type="email">
-                    <input class="password" size="57" name="password" type="password">
+                        <form action="" method="post" novalidate>
+                                {{ form.hidden_tag() }}
+                                    <div class="regli">
+                                    {{ form.email.label }}<br>
+                                    {{ form.email(size=32) }}
+                                </div>
+                                    <div class="regli">
+                                    {{ form.password.label }}<br>
+                                    {{ form.password(size=32) }}
+                                </div>
+                                
+                            </form>
                     <div class="buttons">
-                        <input value="    Вход    " class="enter" type="submit" style="width:200Px;height:60Px">
+                            {{ form.submit() }}
                         <button class="register">Регистрация</button>
                     </div>
                 </form>
