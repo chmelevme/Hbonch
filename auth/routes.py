@@ -10,7 +10,7 @@ auth = Blueprint('auth', __name__, url_prefix='/auth', template_folder='/templat
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('main.main_route'))
     form = login_form()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -18,7 +18,7 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('auth.login'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('auth.main_route'))
+        return redirect(url_for('main.main_route'))
     return render_template('auth/login.html', form=form)
 
 
