@@ -17,4 +17,4 @@ def main_route():
         group_name = form.group_name.data
         value = form.value.data
         value = Level.query.filter_by(value=value)
-    return render_template('kalendar.html', form=form, value=values, groups=groups)
+    return render_template('main/kalendar.html', form=form, value=values, groups=groups)
