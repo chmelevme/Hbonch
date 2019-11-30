@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from config import config
 
-
 db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
@@ -18,5 +17,7 @@ def create_app(app_config=config):
     login.init_app(app)
     from auth import routes
     app.register_blueprint(routes.auth)
+    from main.routes import main
+    app.register_blueprint(main)
     from webapp.models import User, Deadline, Level, Group, Deadline_status
     return app
