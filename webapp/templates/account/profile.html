@@ -48,30 +48,28 @@
 							        	<h3 class="modal-title">Изменение пароля</h3>
 							      	</div>
 							      	<div class="modal-body"> 
+				<form>
 							      		<div class="modal-text">Введите старый пароль:</div>
-							      		<div id="input">
-							      		<form>
+							      		<div>
 								      		{{ change_pass_form.old_password }}
-							      		</form>
 							      	</div>
 							        	<div class="modal-text mt-2">Введите новый пароль:</div> 
-							        	<div id="input">  
-							        	<form>
+							        	<div >  
 								      		{{ change_pass_form.pasword }} 
-							      		</form>
 							      	</div>
 							        	<div class="modal-text mt-2">Повторите новый пароль:</div> 
-							        	<div id="input">  
-							        	<form>
+							        	<div>  
 								      		{{ change_pass_form.password2 }}
-							      		</form>
 							      	</div>
+
 							      	</div>
 
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
 							        <button type="button" class="btn btn-primary">Подтвердить</button>
+				
 							      </div>
+				</form>
 							    </div> 
 							  </div>
 						</div>
@@ -83,20 +81,21 @@
 							        	<h3 class="modal-title">Изменение почты</h3>
 							      	</div>
 							      	<div class="modal-body"> 
+				<form>
 							      		<div class="modal-text">Введите новую почту:</div> 
-							      		<div id="mail">
-							      			<form>
-							      				{{ change_mail_form.mail }} <br>
-							      				{{ change_mail_form.submit() }}		
-							      			</form>
-							      		
+							      		<div >
+							      				{{ change_mail_form.mail }} <br>	
 							      		</div>
 							      	</div>
 
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
-							        <button type="button" class="btn btn-primary">Подтвердить</button>
+							        <div>
+							        	{{ change_mail_form.submit() }}	
+							        </div>
+
 							      </div>
+				</form>
 							    </div> 
 							  </div>
 						</div>
@@ -107,16 +106,22 @@
 							      	<div class="modal-header">
 							        	<h3 class="modal-title">Изменение имени</h3>
 							      	</div>
+							      	<form>
 							      	<div class="modal-body"> 
-							      		<div class="modal-text">Введите новое имя:</div> 
+							      		
+							      		<div class="modal-text">Введите новое имя:</div>
+							      		<div>
 							      		{{ change_name_form.name }}  
-							        	<input type="" class="input">
+							      	</div>
 							      	</div>
 
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
-							        <button type="button" class="btn btn-primary">Подтвердить</button>
+							        <div>
+							        	{{ change_name_form.submit }}
+							    	</div>
 							      </div>
+							  </form>
 							    </div> 
 							  </div>
 						</div>
