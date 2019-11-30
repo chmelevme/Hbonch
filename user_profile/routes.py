@@ -13,6 +13,7 @@ def profile():
     change_name_form = change_name()
     change_pass_form = change_pass()
     if change_mail_form.validate_on_submit():
+        print('good')
         return 'change_mail done'
     if change_pass_form.validate_on_submit():
         return 'change_pass done'

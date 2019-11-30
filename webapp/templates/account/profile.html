@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css')}}">
-		<title>Profile</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+<title>Profile</title>
 </head>
 <body>
 	<div class="container">
@@ -48,13 +48,24 @@
 							        	<h3 class="modal-title">Изменение пароля</h3>
 							      	</div>
 							      	<div class="modal-body"> 
-							      		<div class="modal-text">Введите старый пароль:</div>   
-							        	<input type="password" class="input">
-							        	<div class="modal-text mt-2">Введите новый пароль:</div>   
-							        	<input type="password" class="input">
-							        	<div class="modal-text mt-2">Повторите новый пароль:</div>   
-							        	<input type="password" class="input">
-
+							      		<div class="modal-text">Введите старый пароль:</div>
+							      		<div id="input">
+							      		<form>
+								      		{{ change_pass_form.old_password }}
+							      		</form>
+							      	</div>
+							        	<div class="modal-text mt-2">Введите новый пароль:</div> 
+							        	<div id="input">  
+							        	<form>
+								      		{{ change_pass_form.pasword }} 
+							      		</form>
+							      	</div>
+							        	<div class="modal-text mt-2">Повторите новый пароль:</div> 
+							        	<div id="input">  
+							        	<form>
+								      		{{ change_pass_form.password2 }}
+							      		</form>
+							      	</div>
 							      	</div>
 
 							      <div class="modal-footer">
@@ -72,9 +83,14 @@
 							        	<h3 class="modal-title">Изменение почты</h3>
 							      	</div>
 							      	<div class="modal-body"> 
-							      		<div class="modal-text">Введите новую почту:</div>   
-							        	<input type="" class="input">
-							        	
+							      		<div class="modal-text">Введите новую почту:</div> 
+							      		<div id="mail">
+							      			<form>
+							      				{{ change_mail_form.mail }} <br>
+							      				{{ change_mail_form.submit() }}		
+							      			</form>
+							      		
+							      		</div>
 							      	</div>
 
 							      <div class="modal-footer">
@@ -92,7 +108,8 @@
 							        	<h3 class="modal-title">Изменение имени</h3>
 							      	</div>
 							      	<div class="modal-body"> 
-							      		<div class="modal-text">Введите новое имя:</div>   
+							      		<div class="modal-text">Введите новое имя:</div> 
+							      		{{ change_name_form.name }}  
 							        	<input type="" class="input">
 							      	</div>
 
@@ -276,9 +293,10 @@
 			</div>
 		</div>
 	</div>
-<script src="js/popper.min.js"></script>
-<script src="js/jquery-3.3.1.slim.min.js"></script>
+<script src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.slim.min.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
 </body>
 </html>
+

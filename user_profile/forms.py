@@ -23,7 +23,7 @@ class change_name(FlaskForm):
 
 class change_mail(FlaskForm):
     mail = StringField('Введите новую почту', validators=[DataRequired(), Email()])
-    submit = StringField('Сменить почту')
+    submit = SubmitField('Сменить почту')
 
     def validate_mail(self, mail):
         user = User.query.filter_by(email=mail.data).first()
