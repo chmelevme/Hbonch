@@ -9,8 +9,12 @@ svg{
 .photo img {
 	width: 45px;
 	height: 45px;
-	border: 2px solid black;
 }
+
+.photo img:hover {
+	color: grey;
+}
+
 .day, .day-v {
 	height: 253px;
 	left: 146px;
@@ -75,4 +79,18 @@ svg{
 	border: 2px solid #404040;
 	background-color: #cacaca;
 
+}
+
+.modal-title {
+	color: white;
+	font-weight: 700;
+}
+#modal-body {
+	color: white;
+}
+#modal-content {
+	background-color: #404040;
+}
+#Modal {
+	background-color: rgba(255, 255, 255, 0.2);
 }
