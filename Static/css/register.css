@@ -9,7 +9,7 @@ html {
 
 .bodyc{
     display: flex;
-    margin-top: 150px;
+    margin-top: 60px;
 }
 
 body{
@@ -30,9 +30,9 @@ body{
     flex-direction: row;
     margin-top: 37px;
 }
-.register:hover,
-.register:active,
-.register{
+.login:hover,
+.login:active,
+.login{
     width: 200px;
     height: 50px;
     border: 3px solid #91A2FF;
@@ -48,7 +48,7 @@ body{
     margin-left: 27px;
     text-decoration: none;
 }
-.register:hover{
+.login:hover{
     background-color: #91A2FF;
     transition-duration: 0.2s;
 }
@@ -78,12 +78,15 @@ body{
     margin-top: 26px;
 }
 
-.password{
+.name{
+    margin-top: 26px;
+}
+
+.password, .password2{
     margin-top: 26px;
 }
 
 .regli{
-    margin-top: 26px;
     margin-top: 15px;
     font-family: Montserrat;
     font-style: normal;
@@ -106,11 +109,27 @@ body{
     line-height: 29px;
     color: rgb(0, 0, 0);
 }
+
+#name{
+    height: 70%;
+    width: 70%;
+    background: #C4C4C4;
+    border-radius: 20px;
+    border-style: none;
+    padding: 10px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+    color: rgb(0, 0, 0);
+}
+
 #email:focus, input:focus{
     outline: none;
     }
 
-#password{
+#password, #password2{
     height: 70%;
     width: 70%;
     background: #C4C4C4;
