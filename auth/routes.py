@@ -1,7 +1,8 @@
 from flask import Blueprint, redirect, url_for, flash, render_template
-from auth.forms import login_form
+from auth.forms import login_form, register_form
 from flask_login import current_user, login_user
 from webapp.models import User
+from webapp import db
 
 auth = Blueprint('auth', __name__, url_prefix='/auth', template_folder='/templates')
 
@@ -18,4 +19,21 @@ def login():
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('index'))
-    return render_template('login.html', form=form)
+    return render_template('auth/login.html', form=form)
+
+
+@auth.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = register_form()
+    if form.validate_on_submit():
+        user = User(name=form.name.data,
+                    email=form.email.data)
+        user.set_password(form.password.data)
+        # TODO attention
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now a registered user!')
+        return redirect(url_for('login'))
+    return render_template('auth/register.html', form=form)
