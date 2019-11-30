@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,800,800i&display=swap&subset=cyrillic');
+body{
+	font-family: 'Montserrat', sans-serif;
+	background-color: #404040;
+}
+h1{
+	color: white;
+}
+
+.nick{
+	color: white;
+	font-size: 50px;
+	font-weight: bold;
+}
+.rate{
+	margin-top: 10px;
+}
+.rate-number{
+	margin-top: 30px;
+	line-height: 10%;
+	display: flex;
+	font-size: 90px;
+	font-weight: bold;
+}
+.personal-img{
+	margin-top: 100px;
+}
+.change{
+	margin-top: 130px;
+}
+.title{
+	margin-top: 50px;
+	color: white;
+	font-family: Montserrat;
+	font-style: italic;
+	font-weight: 800;
+	font-size: 38px;
+	line-height: 59px;
+}
+.history-block{
+	background-color: #fff;
+	/*padding-bottom: 560px;*/
+	border-radius: 20px;
+	position: absolute;
+	width: 100%;
+	height: 83%;
+	padding-top: 30px;
+	overflow: auto;
+
+}
+.hist-item-rate{
+	width: 15px;
+	height: 15px;
+	background-color: black;
+}
+.hist-item-text{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 45px;
+	
+
+}
+.history-item{
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+	background-color: #fff;
+}
+
+.text{
+	color: white;
+}
+#r1{
+	background-color: #84FF79;
+}
+#r2{
+	background-color: #FDFFA5;
+}
+#r3{
+	background-color: #FFA5A5;
+}
+
+.modal-title{
+	color: white;
+	font-weight: 700;
+
+}
+.modal-body{
+	color: white;
+}
+.modal-content{
+	background-color: #404040;
+
+}
+#Modal{
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.input{
+	padding:10px;
+	width: 100%;
+	height:40px;
+	border-radius: 10px;
+	border-style: none;
+	background-color: #C4C4C4;
+}
+.modal-text{
+
+}
+
+.a:active, /* активная/посещенная ссылка */
+.a:hover,  /* при наведении */
+.a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-primary{
+	background-color: #90A2FF;
+}
+.btn-primary:hover{
+	background-color: #5873FF;
+}
