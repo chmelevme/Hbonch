@@ -89,7 +89,6 @@ class tests(unittest.TestCase):
         db.session.add_all([u, group, d])
         db.session.commit()
         user = User.query.filter_by(name='Test_user').first()
-        print(user)
 
 
 if __name__ == '__main__':
