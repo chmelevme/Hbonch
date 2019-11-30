@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, flash, render_template
 from auth.forms import login_form, register_form
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
 from webapp.models import User, Group
 from webapp import db
 
@@ -38,3 +38,9 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html', form=form)
+
+
+@auth.route('/logout', methods=['GET'])
+def logout():
+    logout_user()
+    return redirect(url_for('auth.login'))
