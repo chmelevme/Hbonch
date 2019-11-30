@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField
+from wtforms import StringField, SubmitField, PasswordField, BooleanField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from webapp.models import User
 
@@ -7,6 +7,7 @@ from webapp.models import User
 class login_form(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Login')
 
 
@@ -18,11 +19,11 @@ class register_form(FlaskForm):
     submit = SubmitField('Register')
 
     def validate_email(self, email):
-        user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('this name is already taken')
 
     def validate_name(self, name):
-        user = User.query.filter_by(name=name)
+        user = User.query.filter_by(name=name.data)
         if user is not None:
             raise ValidationError('This mail is already registered')
