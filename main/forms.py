@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateField
+from wtforms import StringField, DateField,SubmitField
 from wtforms.validators import ValidationError, DataRequired
 from webapp.models import Level, Group
 from datetime import datetime
@@ -10,6 +10,7 @@ class create_deadline(FlaskForm):
     value = StringField(validators=[DataRequired()])
     title = StringField(validators=[DataRequired()])
     expiration_date = DateField(validators=[DataRequired()])
+    submit = SubmitField('Создать')
 
     def validate_expiration_date(self, expiration_date):
         now = datetime.utcnow()
