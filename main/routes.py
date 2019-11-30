@@ -11,8 +11,10 @@ main = Blueprint('main', __name__, url_prefix='/main', template_folder='template
 @main.route('/', methods=['GET', 'POST'])
 def main_route():
     form = create_deadline()
+    values = {'первый', 'второй', 'третий'}
+    groups = {'1', '2', '3'}
     if form.validate_on_submit():
         group_name = form.group_name.data
         value = form.value.data
         value = Level.query.filter_by(value=value)
-
+    return render_template('kalendar.html', form=form, value=values, groups=groups)
