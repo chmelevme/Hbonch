@@ -2,7 +2,7 @@ from flask import Blueprint, redirect, url_for, flash, render_template
 from flask_login import current_user, login_required
 from webapp.models import User, Group
 from webapp import db
-from profile.forms import change_mail, change_name, change_pass
+
 
 profile = Blueprint('profile', __name__, url_prefix='/profile', template_folder='/templates')
 
