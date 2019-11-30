@@ -1,12 +1,18 @@
 from flask import Flask
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from config import config
 
-app = Flask(__name__)
+db = SQLAlchemy()
+migrate = Migrate()
+login = LoginManager()
 
+def create_app(app_config=config):
+    app = Flask(__name__, static_folder='../static')
+    app.config.from_object(app_config)
+    db.init_app(app=app)
+    migrate.init_app(app, db)
+    login.init_app(app)
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
-
-if __name__ == '__main__':
-    app.run()
+    return app
