@@ -18,5 +18,5 @@ def profile():
         return 'change_pass done'
     if change_name_form.validate_on_submit():
         return 'change_name done'
-    return render_template('account/profile', change_mail_form=change_mail_form, change_pass_form=change_pass_form,
+    return render_template('account/profile.html', change_mail_form=change_mail_form, change_pass_form=change_pass_form,
                            change_name_form=change_name_form)
