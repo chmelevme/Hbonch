@@ -41,8 +41,8 @@ class User(UserMixin, db.Model):
 
 class Group(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(20), nullable=False)
-    deadlines = db.relationship('Deadline', backref=db.backref('group'), lazy='dynamic')
+    name = db.Column(db.String(20), nullable=False, unique=True)
+    deadlines = db.relationship('Deadline', backref=db.backref('group', uselist=False), lazy='dynamic')
 
 
 class Deadline(db.Model):

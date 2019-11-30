@@ -1,0 +1,96 @@
+svg{
+	margin: 20px;
+}
+
+.modal-dialog {
+	background-color: #F2F2F2;
+}
+
+.photo img {
+	width: 45px;
+	height: 45px;
+}
+
+.photo img:hover {
+	color: grey;
+}
+
+.day, .day-v {
+	height: 253px;
+	left: 146px;
+	top: 294px;
+	margin: 10px 0;
+	background: #F2F2F2;
+	border-radius: 15px;
+}
+.data {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 36px;
+	line-height: 44px;
+	color: #F2F2F2;
+	padding: 20px 0 0 10px;
+}
+
+.zadacha {
+	height: 20px;
+	padding: 35px 0 0 0;
+	background-color: grey;
+}
+.zadacha-txt {
+	font-family: Montserrat;
+	font-size: 16px;
+	line-height: 20px;
+	margin: 0 10px 0 10px;
+}
+
+.day-text {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: 800;
+	font-size: 58px;
+	line-height: 78px;
+	color: #F2F2F2;
+}
+
+.week-text {
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 22px;
+	line-height: 22px;
+	color: #FEFEFE;
+	padding: 10px;
+}
+
+.knopka {	
+	height: 51px;
+	background: #F2F2F2;
+	border-radius: 50px;
+	font-family: Montserrat;
+	text-align: center;
+	font-size: 20px;
+	padding: 12px;
+	line-height: 22px;
+	color: #000000;
+}
+.knopka:hover {
+	border: 2px solid #404040;
+	background-color: #cacaca;
+
+}
+
+.modal-title {
+	color: white;
+	font-weight: 700;
+}
+#modal-body {
+	color: white;
+}
+#modal-content {
+	background-color: #404040;
+}
+#Modal {
+	background-color: rgba(255, 255, 255, 0.2);
+}
