@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,800,800i&display=swap');
 .bodyc{
     display: flex;
+    margin-top: 150px;
 }
 
 body{
@@ -58,8 +59,4 @@ body{
 
 .password{
     margin-top: 26px;
-}
-
-.name{
-    margin-top: 29px;
 }
