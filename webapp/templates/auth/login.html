@@ -30,9 +30,13 @@
                                 Электронная почта<br>   
                                 {{ form.email(size=32) }}
                             </div>
-                                <div class="regli">
+                            <div class="regli">
                                 Пароль<br>
                                 {{ form.password(size=32) }}
+                            </div>
+                            <div class="regli">
+                                {{ form.remember_me() }}
+                                Запомнить меня
                             </div>
                     <div class="buttons">
                         {{ form.submit() }}
