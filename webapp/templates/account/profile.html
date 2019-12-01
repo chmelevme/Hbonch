@@ -7,8 +7,10 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+
 <title>Profile</title>
 </head>
+
 <body>
 	<div class="container">
 		<div class="row justify-content-center">
@@ -27,19 +29,47 @@
 
 				</div>
 
-				<div class="personal-img">
-					<svg width="200" height="200" viewBox="0 0 276 276" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="138" cy="138" r="138" fill="#C4C4C4"/>
-						</svg>
-
+				<div class="personal-img" id="img11">
+					{% if last_digit=='1' %}
+					<img src="{{ url_for('static', filename='avatars/1.png')}}" width="220px">
+					{% endif %}
+					{% if last_digit=='2' %}
+					<img src="{{ url_for('static', filename='avatars/2.png')}}" width="220px">
+					{% endif %}
+					{% if last_digit=='3' %}
+					<img src="{{ url_for('static', filename='avatars/3.png')}}" width="220px">
+					{% endif %}
+					{% if last_digit=='4' %}
+					<img src="{{ url_for('static', filename='avatars/4.png')}}" width="220px">
+					{% endif %}
+					{% if last_digit=='5' %}
+					<img src="{{ url_for('static', filename='avatars/5.png')}}" width="220px">
+					{% endif %}
+					{% if last_digit=='6' %}
+					<img src="{{ url_for('static', filename='avatars/6.png')}}" width="220px">
+					{% endif %}
+					{% if last_digit=='7' %}
+					<img src="{{ url_for('static', filename='avatars/7.png')}}" width="220px">
+					{% endif %}
+					{% if last_digit=='8' %}
+					<img src="{{ url_for('static', filename='avatars/8.png')}}" width="220px">
+					{% endif %}
+					{% if last_digit=='9' %}
+					<img src="{{ url_for('static', filename='avatars/9.png')}}" width="220px">
+					{% endif %}
+					{% if last_digit=='0' %}
+					<img src="{{ url_for('static', filename='avatars/10.png')}}" width="220px">
+					{% endif %}
 				</div>
 
 				<div class="nick">
-					YOUR dICK
+					{{current_user.name}}
 				</div>
 				<div class="rate">
 					<div class="text">РЕЙТИНГ</div>
-					<div class="rate-number">3209912*</div>
+					<div class="rate-number">
+						{{points}}*
+					</div>
 				</div>
 				<div class="change">
 				<div><a href="#" data-toggle="modal" data-target="#Modal" class="a">СМЕНИТЬ ПАРОЛЬ</a></div>
@@ -135,168 +165,30 @@
 			<div class="col-6 mt-5">
 				<div class="title">ИСТОРИЯ</div>
 				<div class="history-block">
+				{% for item in history %} 
+					{% if item[3]==10 %}
 					<div class="history-item" id="r1">
+					{% endif %}
+					{% if item[3]==20 %}
+					<div class="history-item" id="r2">
+					{% endif %}
+					{% if item[3]==30 %}
+					<div class="history-item" id="r3">
+					{% endif %}
 						<div class="container-fluid">
 							<div class="row d-flex align-items-center">
 								<div class="col-1">
-									<input type="checkbox" name="">
+									{% if item[2]==1 %}
+									<img width="30px" src="{{ url_for('static', filename='image/icon.png')}}">
+									{% endif %}
 								</div>
-								<div class="col-7">
-									<div class="hist-item-text">Задание номер 000000</div>
-								</div>
-								<div class="col-4">
-									<div class="hist-item-text">31/12/2020</div>
+								<div class="col-11">
+									<div class="hist-item-text">{{item[1]}}</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
-					<div class="history-item" id="r1">
-						<div class="container-fluid">
-							<div class="row d-flex align-items-center">
-								<div class="col-1">
-									<input type="checkbox" name="">
-								</div>
-								<div class="col-7">
-									<div class="hist-item-text">Задание номер 000000</div>
-								</div>
-								<div class="col-4">
-									<div class="hist-item-text">31/12/2020</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="history-item" id="r1">
-						<div class="container-fluid">
-							<div class="row d-flex align-items-center">
-								<div class="col-1">
-									<input type="checkbox" name="">
-								</div>
-								<div class="col-7">
-									<div class="hist-item-text">Задание номер 000000</div>
-								</div>
-								<div class="col-4">
-									<div class="hist-item-text">31/12/2020</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="history-item" id="r1">
-						<div class="container-fluid">
-							<div class="row d-flex align-items-center">
-								<div class="col-1">
-									<input type="checkbox" name="">
-								</div>
-								<div class="col-7">
-									<div class="hist-item-text">Задание номер 000000</div>
-								</div>
-								<div class="col-4">
-									<div class="hist-item-text">31/12/2020</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="history-item" id="r1">
-						<div class="container-fluid">
-							<div class="row d-flex align-items-center">
-								<div class="col-1">
-									<input type="checkbox" name="">
-								</div>
-								<div class="col-7">
-									<div class="hist-item-text">Задание номер 000000</div>
-								</div>
-								<div class="col-4">
-									<div class="hist-item-text">31/12/2020</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
-					<div class="history-item" id="r1">
-						<div class="container-fluid">
-							<div class="row d-flex align-items-center">
-								<div class="col-1">
-									<input type="checkbox" name="">
-								</div>
-								<div class="col-7">
-									<div class="hist-item-text">Задание номер 000000</div>
-								</div>
-								<div class="col-4">
-									<div class="hist-item-text">31/12/2020</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="history-item" id="r1">
-						<div class="container-fluid">
-							<div class="row d-flex align-items-center">
-								<div class="col-1">
-									<input type="checkbox" name="">
-								</div>
-								<div class="col-7">
-									<div class="hist-item-text">Задание номер 000000</div>
-								</div>
-								<div class="col-4">
-									<div class="hist-item-text">31/12/2020</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="history-item" id="r1">
-						<div class="container-fluid">
-							<div class="row d-flex align-items-center">
-								<div class="col-1">
-									<input type="checkbox" name="">
-								</div>
-								<div class="col-7">
-									<div class="hist-item-text">Задание номер 000000</div>
-								</div>
-								<div class="col-4">
-									<div class="hist-item-text">31/12/2020</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="history-item" id="r1">
-						<div class="container-fluid">
-							<div class="row d-flex align-items-center">
-								<div class="col-1">
-									<input type="checkbox" name="">
-								</div>
-								<div class="col-7">
-									<div class="hist-item-text">Задание номер 000000</div>
-								</div>
-								<div class="col-4">
-									<div class="hist-item-text">31/12/2020</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="history-item" id="r1">
-						<div class="container-fluid">
-							<div class="row d-flex align-items-center">
-								<div class="col-1">
-									<input type="checkbox" name="">
-								</div>
-								<div class="col-7">
-									<div class="hist-item-text">Задание номер 000000</div>
-								</div>
-								<div class="col-4">
-									<div class="hist-item-text">31/12/2020</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-
+					{% endfor %}
 				</div>
 			</div>
 		</div>
