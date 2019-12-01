@@ -31,9 +31,9 @@
 		<div class="dropdown">
  			<img src="../../../static/image/avatar_i.png" class="dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
  			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    			<a class="dropdown-item" href="#">Профиль</a>
-    			<a class="dropdown-item" href="#">Группы</a>
-    			<a class="dropdown-item" href="#">Выйти</a>
+    			<a class="dropdown-item" href="{{ url_for('profile.profile') }}">Профиль</a>
+    			<a class="dropdown-item" href="{{ url_for('profile.group') }}">Группы</a>
+    			<a class="dropdown-item" href="{{ url_for('auth.logout') }}">Выйти</a>
   			</div>
 		</div>
 	</div>
@@ -45,19 +45,22 @@
  			<div class="week-text">ТЕКУЩАЯ НЕДЕЛЯ</div>
  		</div>
  		<div class="col-3 offset-1">
- 			<div class="knopka" onclick="show('block')">Добавить задачу</div>
+ 			<div class="knopka" data-toggle="modal" data-target="#exampleModal">Добавить задачу</div>
  		</div>
  	</div>
  </div>
 
-<div id="modal" class="modal" tabindex="-1" role="dialog">
-  <div  id="modal-dialog" class="modal-dialog" role="document">
+<div class="modal fade" id="exampleModal" class="close"  data-dismiss="modal" aria-label="Close" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" id="modal-dialog">
     <div class="modal-content" id="modal-content">
+        <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       <div class="modal-body" id="modal-body">
-		<form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
+        <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }} 
             <div class="modal-title">
-            {{ form.group_name.label }}<br>
+            {{ form.group_name.label }} <br>
             {{ form.group_name(size=32) }}
         </div>
             <div class="modal-title">
@@ -78,7 +81,7 @@
       </div>
     </div>
   </div>
- </div>
+</div>
 
 <div class="container">
 	<div class="container-fluid">

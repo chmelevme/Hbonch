@@ -81,6 +81,14 @@ svg{
 
 }
 
+#submit {
+	background: #F2F2F2;
+border-radius: 50px;
+border: none;
+height: 35px; 
+width: 120px;
+}
+
 .modal-title {
 	color: white;
 	font-weight: 700;
@@ -90,7 +98,16 @@ svg{
 }
 #modal-content {
 	background-color: #404040;
+	border-radius: 3px;
 }
-#Modal {
+#exampleModal {
 	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 3px;
+}
+#modal-dialog {
+	border-radius: 3px;
+}
+
+#group_name {
+
 }

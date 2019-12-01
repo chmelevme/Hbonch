@@ -1,7 +1,7 @@
 import unittest
 from webapp import create_app, db
 from config import config
-from webapp.models import User, Deadline, Level, Group, Deadline_status
+from webapp.models import User, Deadline, Level, Group, Deadline_status, members
 from datetime import datetime, timedelta
 
 
@@ -89,6 +89,24 @@ class tests(unittest.TestCase):
         db.session.add_all([u, group, d])
         db.session.commit()
         user = User.query.filter_by(name='Test_user').first()
+
+    def test_get_members_of_group(self):
+        u1 = User(name='Test_user1', email='Test_user_email1')
+        u2 = User(name='Test_user2', email='Test_user_email2')
+        u3 = User(name='Test_user3', email='Test_user_email3')
+        u4 = User(name='Test_user4', email='Test_user_email4')
+        group = Group(name='Test_group')
+        group.members.append(u1)
+        group.members.append(u2)
+        group.members.append(u3)
+        group.members.append(u4)
+        db.session.add_all([u1, u2, u3, u4, group])
+        db.session.commit()
+        group.create_link()
+        db.session.commit()
+        id = 1
+        members2 = group.query.get(id).members.join(members,(members.c.user_id==User.id)).add_column(members.c.points).order_by(members.c.points).all()
+        print(members2)
 
 
 if __name__ == '__main__':
