@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, url_for, flash, render_template
+from flask import Blueprint, redirect, url_for, flash, render_template,jsonify
 from flask_login import current_user, login_required
 from webapp.models import User, Group, Deadline_status, Level, Deadline
 from webapp import db
@@ -29,3 +29,15 @@ def main_route():
             db.session.commit()
 
     return render_template('main/kalendar.html', form=form, value=values, groups=groups)
+
+@login_required
+@main.route('/test/')
+def test():
+    return jsonify(data = '123')
+
+@login_required
+@main.route('/data/<string:Data_start>/<string:Data_end>')
+def get_deadlines(Data_start, Data_end):
+    deadlines = Deadline_status.query.filter_by(user_id=current_user.id).filter_by(deadline.expiration_date>Data_start).all()
+    print(deadlines)
+    return str(deadlines)
