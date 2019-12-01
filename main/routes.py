@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, url_for, flash, render_template, jsonify
 from flask_login import current_user, login_required
-from webapp.models import User, Group, Deadline_status, Level, Deadline
+from webapp.models import User, Group, Deadline_status, Level, Deadline, members
 from webapp import db
 from main.forms import create_deadline
 from datetime import datetime
@@ -58,3 +58,20 @@ def main_route():
     return render_template('main/kalendar.html', form=form, value=values, groups=groups, monday=Monday,
                            Thursday=Thursday, Wednesday=Wednesday, Friday=Friday, Saturday=Saturday, Sunday=Sunday,
                            Tuesday=Tuesday)
+
+
+@login_required
+@main.route('/done/<int:id>')
+def done(id):
+    #TODO Доделть
+    deadline = Deadline.query.filter_by(id=id).first()
+    status = Deadline_status.query.filter_by(deadline_id=deadline.id, user_id=current_user.id).first()
+    status.status = 1
+    group = deadline.group_id
+    member = db.session.query(members).filter(members.c.group_id == group, members.c.user_id == current_user.id).first()
+    s = int(member.points) + int(deadline.level.value)
+    user_group_id = current_user.self_group.id
+    member = db.session.query(members).filter(members.c.group_id == user_group_id, members.c.user_id == current_user.id)
+    member.points += deadline.level.value
+    db.session.commit()
+    return redirect(url_for('main.main_route'))
