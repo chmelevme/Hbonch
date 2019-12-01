@@ -50,8 +50,7 @@ class Group(db.Model):
     invite_link = db.Column(db.String, unique=True)
 
     def create_link(self):
-        now = datetime.utcnow()
-        invite_link_id = jwt.encode({'id': str(self.id), 'exp': now + timedelta(minutes=10)}, config.SECRET_KEY,
+        invite_link_id = jwt.encode({'id': str(self.id)}, config.SECRET_KEY,
                                     algorithm='HS256').decode('utf-8')
         self.invite_link = 'http://127.0.0.1:5000/profile/invite/' + invite_link_id
 
@@ -59,7 +58,6 @@ class Group(db.Model):
     def verify_invite_link(token):
         try:
             id = jwt.decode(token, config.SECRET_KEY, algorithms='HS256')['id']
-            print(id)
         except:
             return
         return Group.query.get(id)

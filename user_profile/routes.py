@@ -44,9 +44,9 @@ def get_users_from_group(id):
 @user_profile.route('/invite/<string:url>')
 def invite(url):
     group = Group.verify_invite_link(url)
-    print(group)
     if group is not None:
-        print('here')
+        print(group.members.all())
+        print(current_user)
         group.members.append(current_user)
         db.session.add(group)
         db.session.commit()
