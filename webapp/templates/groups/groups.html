@@ -57,12 +57,12 @@
 						<h3 class="modal-title">Создание группы</h3>
 					</div>
 					<form action="" method="post" novalidate>
-					{{ form.hidden_tag() }}	
+					
 						<div class="modal-body"> 
 						
 							<div class="modal-text">Введите название</div> 
 							<div >
-								{{form.name}} <br>	
+								{{ form.name }} <br>	
 							</div>
 						</div>
 		
@@ -82,7 +82,10 @@
 			<div class="col-4">
 				<div class="columngroup">
 					<div class="nameg">{{ item['name']}}</div>
-					<div class="invlink">{{item['url']}}</div>
+
+					<input class="invlink" type="text" readonly="readonly" value="{{item['url']}}">
+
+					<!--<div class="invlink">{{item['url']}}</div>-->
 					{% for person in item['members'] %}
 					<div class="userinf">
 							<div class="pers">{{person['user']}}</div>
