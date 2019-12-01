@@ -12,7 +12,9 @@ user_profile = Blueprint('profile', __name__, url_prefix='/profile', template_fo
 @user_profile.route('/groups', methods=['POST', 'GET'])
 def group():
     form = create_group()
+    print(form.validate_on_submit())
     if form.validate_on_submit():
+        print('here')
         group = Group(name=form.name.data)
         group.members.append(current_user)
         db.session.add(group)
@@ -23,17 +25,11 @@ def group():
     response = []
     for item in groups_id:
         a = dict()
-        a['name']=Group.query.get(item).name
-        a['url']=Group.query.get(item).invite_link
-        a['members']=get_users_from_group(item)
+        a['name'] = Group.query.get(item).name
+        a['url'] = Group.query.get(item).invite_link
+        a['members'] = get_users_from_group(item)
         response.append(a)
-    print(response)
-    for person in response[0]['members']:
-        print(person['user'])
-
-
     return render_template('groups/groups.html', groups=response, form=form)
-
 
 
 def get_users_from_group(id):
@@ -50,8 +46,10 @@ def get_users_from_group(id):
 @user_profile.route('/invite/<string:url>')
 def invite(url):
     group = Group.verify_invite_link(url)
+
     if group is not None:
         group.members.append(current_user)
+        db.session.commit()
         deadlines_ids = [item.id for item in group.deadlines.all()]
         for deadline_id in deadlines_ids:
             d_s = Deadline_status(user_id=current_user.id, deadline_id=deadline_id)

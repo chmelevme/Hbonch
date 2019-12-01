@@ -36,6 +36,6 @@ class create_group(FlaskForm):
     submit = SubmitField('Создать')
 
     def validate_name(self, name):
-        name = Group.query.filter_by(name=name.data)
+        name = Group.query.filter_by(name=name.data).first()
         if name is not None:
             raise ValidationError('Это название уже занято')
