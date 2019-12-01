@@ -55,7 +55,7 @@ def main_route():
         .join(Level).add_column(Level.value).filter(Deadline.expiration_date == 7).all()
     print(Monday)
 
-    return render_template('main/kalendar.html', form=form, value=values, groups=groups, monday=Monday,
+    return render_template('main/kalendar.html', form=form, value=values, groups=groups, Monday=Monday,
                            Thursday=Thursday, Wednesday=Wednesday, Friday=Friday, Saturday=Saturday, Sunday=Sunday,
                            Tuesday=Tuesday)
 

@@ -13,11 +13,9 @@ svg{
 	color: grey;
 }
 
-.day, .day-v {
+.day-block, .day-v-block {
 	height: 240px;
-	left: 146px;
-	top: 294px;
-	margin: 3px 0;
+	width: 100%;
 	background: #F2F2F2;
 	border-radius: 15px;
 	overflow: auto;
@@ -28,6 +26,7 @@ svg{
 	display: flex;
 	justify-content: center;
 	flex-flow: column;
+	padding: 3px;
 	background-color: #fff;
 }
 
@@ -72,6 +71,10 @@ svg{
 	color: #F2F2F2;
 }
 
+.logo{
+	margin-left: 15px;
+}
+
 .week-text {
 	font-family: Montserrat;
 	font-style: normal;
@@ -79,7 +82,7 @@ svg{
 	font-size: 15px;
 	line-height: 22px;
 	color: #FEFEFE;
-	margin-left: 20px;
+	margin-left: 35px;
 }
 
 .knopka {	
@@ -126,7 +129,7 @@ svg{
 
 .modal-title {
 	color: white;
-	font-weight: 400;
+	font-weight: 700;
 }
 #modal-body {
 	color: white;
@@ -155,5 +158,9 @@ svg{
 #label{
 	color:black;
 	font-weight: 400;
+}
 
+.modal-text{
+	color: white;
+	font-weight: 400;
 }
