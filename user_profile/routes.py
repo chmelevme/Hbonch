@@ -28,7 +28,11 @@ def group():
 def get_users_from_group(id):
     group_rating = Group.query.get(id).members.join(members, (members.c.user_id == User.id)).add_column(
         members.c.points).add_column(User.name).order_by(members.c.points).all()
-    return jsonify(data=str(group_rating))
+    json_d = list()
+    for item in group_rating:
+        a, b = item[1:3]
+        json_d.append({'user': b, 'points': a})
+    return jsonify(data=json_d, group_link=Group.query.get(id).invite_link, group_name=Group.query.get(id).name)
 
     @login_required
     @user_profile.route('/invite/<string:url>')
