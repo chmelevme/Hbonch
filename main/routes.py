@@ -3,7 +3,7 @@ from flask_login import current_user, login_required
 from webapp.models import User, Group, Deadline_status, Level, Deadline, members
 from webapp import db
 from main.forms import create_deadline
-from datetime import datetime
+from sqlalchemy import update
 
 main = Blueprint('main', __name__, url_prefix='/main', template_folder='templates')
 
@@ -63,15 +63,20 @@ def main_route():
 @login_required
 @main.route('/done/<int:id>')
 def done(id):
-    #TODO Доделть
     deadline = Deadline.query.filter_by(id=id).first()
-    status = Deadline_status.query.filter_by(deadline_id=deadline.id, user_id=current_user.id).first()
-    status.status = 1
-    group = deadline.group_id
-    member = db.session.query(members).filter(members.c.group_id == group, members.c.user_id == current_user.id).first()
-    s = int(member.points) + int(deadline.level.value)
-    user_group_id = current_user.self_group.id
-    member = db.session.query(members).filter(members.c.group_id == user_group_id, members.c.user_id == current_user.id)
-    member.points += deadline.level.value
+    group_id = deadline.group_id
+    if group_id != current_user.self_group.id:
+        Deadline_status.query.filter_by(deadline_id=deadline.id).first().status = 1
+        s = db.session.query(members).filter(members.c.group_id == group_id,
+                                             members.c.user_id == current_user.id).first().points + deadline.level.value
+        db.session.query(members).filter(members.c.group_id == group_id, members.c.user_id == current_user.id).update(
+            {members.c.points: s}, synchronize_session=False)
+        db.session.commit()
+    s = db.session.query(members).filter(members.c.group_id == current_user.self_group.id,
+                                         members.c.user_id == current_user.id).first().points + deadline.level.value
+    db.session.query(members).filter(members.c.group_id == current_user.self_group.id,
+                                     members.c.user_id == current_user.id).update(
+        {members.c.points: s}, synchronize_session=False)
     db.session.commit()
+
     return redirect(url_for('main.main_route'))
