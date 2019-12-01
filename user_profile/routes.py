@@ -19,11 +19,7 @@ def group():
         db.session.commit()
         group.create_link()
         db.session.commit()
-    # groups = current_user.groups.filter(Group.id != current_user.self_group.id).join(members, (
-    #             members.c.group_id == Group.id)).add_column(Group.name).add_column(Group.invite_link).add_column(User.name).add_column(
-    #     members.c.points).order_by(members.c.points).all()
     groups_id = [item.id for item in current_user.groups.filter(Group.id != current_user.self_group.id).all()]
-    print(groups_id)
     response = []
     for item in groups_id:
         a = dict()
@@ -31,11 +27,6 @@ def group():
         a['url']=Group.query.get(item).invite_link
         a['members']=get_users_from_group(item)
         response.append(a)
-        
-
-    print(response)
-
-
     return render_template('groups/groups.html', groups=response, form=form)
 
 
