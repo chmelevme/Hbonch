@@ -19,8 +19,10 @@ def group():
         db.session.commit()
         group.create_link()
         db.session.commit()
-    groups_id = [item.id for item in current_user.groups.filter(Group.id != current_user.self_group.id).all()]
-    return render_template('groups/groups.html', groups_id=groups_id, form=form)
+    groups = current_user.groups.filter(Group.id != current_user.self_group.id).join(members, (
+                members.c.group_id == Group.id)).add_column(Group.name).add_column(Group.invite_link).add_column(User.name).add_column(
+        members.c.points).order_by(members.c.points).all()
+    return render_template('groups/groups.html', groups_id=groups, form=form)
 
 
 @login_required
