@@ -87,7 +87,7 @@ var k=0;
 function next_group(){
 	k++;
 	alert({{ groups_id }}[k]);
-	z={{ groups_id }}[k]
+	z={{ groups_id }}[k];
 	$.ajax({	
   url: 'groups/'+z,
   type: 'GET',
