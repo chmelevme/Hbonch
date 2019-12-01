@@ -58,27 +58,3 @@ def main_route():
     return render_template('main/kalendar.html', form=form, value=values, groups=groups, monday=Monday,
                            Thursday=Thursday, Wednesday=Wednesday, Friday=Friday, Saturday=Saturday, Sunday=Sunday,
                            Tuesday=Tuesday)
-
-
-@login_required
-@main.route('/test/')
-def test():
-    return jsonify(data='123')
-
-
-@login_required
-@main.route('/data/<int:Data_start>/<int:Data_end>')
-def get_deadlines(Data_start, Data_end):
-    deadlines = Deadline_status.query.filter_by(user_id=current_user.id) \
-        .join(Deadline, Deadline.id == Deadline_status.deadline_id) \
-        .add_column(Deadline.title) \
-        .add_column(Deadline.id) \
-        .join(Level) \
-        .add_column(Level.value) \
-        .filter(Deadline.expiration_date > Data_start, Deadline.expiration_date < Data_end).all()
-    print(deadlines)
-    d2 = Deadline.query.filter_by(expiration_date=datetime.utcnow().day).first()
-    for item in Deadline.query.all():
-        print(item.expiration_date)
-
-    return str(deadlines)
