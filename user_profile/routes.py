@@ -12,9 +12,7 @@ user_profile = Blueprint('profile', __name__, url_prefix='/profile', template_fo
 @user_profile.route('/groups', methods=['POST', 'GET'])
 def group():
     form = create_group()
-    print(form.validate_on_submit())
     if form.validate_on_submit():
-        print('here')
         group = Group(name=form.name.data)
         group.members.append(current_user)
         db.session.add(group)
@@ -46,9 +44,11 @@ def get_users_from_group(id):
 @user_profile.route('/invite/<string:url>')
 def invite(url):
     group = Group.verify_invite_link(url)
-
+    print(group)
     if group is not None:
+        print('here')
         group.members.append(current_user)
+        db.session.add(group)
         db.session.commit()
         deadlines_ids = [item.id for item in group.deadlines.all()]
         for deadline_id in deadlines_ids:

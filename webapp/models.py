@@ -59,6 +59,7 @@ class Group(db.Model):
     def verify_invite_link(token):
         try:
             id = jwt.decode(token, config.SECRET_KEY, algorithms='HS256')['id']
+            print(id)
         except:
             return
         return Group.query.get(id)
