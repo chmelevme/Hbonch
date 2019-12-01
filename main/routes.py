@@ -1,9 +1,9 @@
-from flask import Blueprint, redirect, url_for, flash, render_template,jsonify
+from flask import Blueprint, redirect, url_for, flash, render_template, jsonify
 from flask_login import current_user, login_required
 from webapp.models import User, Group, Deadline_status, Level, Deadline
 from webapp import db
 from main.forms import create_deadline
-
+from datetime import datetime
 main = Blueprint('main', __name__, url_prefix='/main', template_folder='templates')
 
 
@@ -30,14 +30,26 @@ def main_route():
 
     return render_template('main/kalendar.html', form=form, value=values, groups=groups)
 
+
 @login_required
 @main.route('/test/')
 def test():
-    return jsonify(data = '123')
+    return jsonify(data='123')
+
 
 @login_required
-@main.route('/data/<string:Data_start>/<string:Data_end>')
+@main.route('/data/<int:Data_start>/<int:Data_end>')
 def get_deadlines(Data_start, Data_end):
-    deadlines = Deadline_status.query.filter_by(user_id=current_user.id).filter_by(deadline.expiration_date>Data_start).all()
+    deadlines = Deadline_status.query.filter_by(user_id=current_user.id) \
+        .join(Deadline, Deadline.id == Deadline_status.deadline_id) \
+        .add_column(Deadline.title) \
+        .add_column(Deadline.id) \
+        .join(Level) \
+        .add_column(Level.value) \
+        .filter(Deadline.expiration_date > Data_start, Deadline.expiration_date < Data_end).all()
     print(deadlines)
+    d2 = Deadline.query.filter_by(expiration_date=datetime.utcnow().day).first()
+    for item in Deadline.query.all():
+        print(item.expiration_date)
+
     return str(deadlines)
