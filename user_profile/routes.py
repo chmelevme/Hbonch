@@ -30,4 +30,4 @@ def profile():
 
     return render_template('account/profile.html', change_mail_form=change_mail_form, change_pass_form=change_pass_form,
                            change_name_form=change_name_form, history=history, points=points,
-                           last_digit=current_user.id[-1])
+                           last_digit=str(current_user.id)[-1])
