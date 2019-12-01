@@ -12,7 +12,9 @@ user_profile = Blueprint('profile', __name__, url_prefix='/profile', template_fo
 @user_profile.route('/groups', methods=['POST', 'GET'])
 def group():
     form = create_group()
+    print(form.validate_on_submit())
     if form.validate_on_submit():
+        print('here')
         group = Group(name=form.name.data)
         group.members.append(current_user)
         db.session.add(group)
