@@ -64,24 +64,24 @@
         {{ form.hidden_tag() }} 
             <div class="modal-title">
             {{ form.group_name.label }} 
-        	</div>
-            {{ form.group_name(size=32) }}
         	
+            {{ form.group_name(size=32) }}
+        	</div>
             <div class="modal-title">
             {{ form.value.label }}
-            </div>
+            
             {{ form.value(size=32) }}
-        
+        	</div>
             <div class="modal-title">
             {{ form.expiration_date.label }}
-            </div>
+            
             {{ form.expiration_date() }}
-        
+        	</div>
         <div class="modal-title">
         	{{ form.title.label }}
-        	</div>
+        	
             {{ form.title() }}
-        
+        </div>
         <br>
         
    
@@ -108,12 +108,27 @@
 						<div class="col align-self-start align-items-center">
 							<div class="day-text">Пн</div>
 						</div>	
-						<div class="col align-self-END">
-							<div class="data" id="results_data"></div>
-						</div>
+						
 					</div>
-						<div class="day">	
-							<div class="tasks"> <p class="zadacha-txt">fdfs</p></div>
+					
+						<div class="day">
+							{% for item in Monday %}
+						<div class="day-item" id="r1">
+						<div class="container-fluid">
+							<div class="row d-flex align-items-center">
+								<div class="col-2">
+									<input type="checkbox" name="">
+								</div>
+								<div class="col-10">
+									<div class="day-item-text">{{item[3]}}</div>
+								</div>
+								
+							</div>
+						</div>
+						{% endfor %}
+					</div>	
+					
+							<div class="tasks"> <p class="zadacha-txt"></p></div>
 						</div>
 					</div>
 					<div class="col-4">
@@ -121,9 +136,6 @@
 						<div class="col align-self-start">
 							<div class="day-text">Вт</div>
 						</div>	
-						<div class="col align-self-END">
-							<div class="data">22.11</div>
-						</div>
 					</div>
 						<div class="day"></div>
 					</div>
@@ -132,9 +144,6 @@
 						<div class="col align-self-start">
 							<div class="day-text">Ср</div>
 						</div>	
-						<div class="col align-self-END">
-							<div class="data">22.11</div>
-						</div>
 					</div>
 						<div class="day"></div>			
 					</div>
@@ -145,9 +154,6 @@
 						<div class="col align-self-start">
 							<div class="day-text">Чт</div>
 						</div>	
-						<div class="col align-self-END">
-							<div class="data">22.11</div>
-						</div>
 					</div>
 					<div class="day"></div>
 				</div>
@@ -156,9 +162,6 @@
 						<div class="col align-self-start">
 							<div class="day-text">Пт</div>
 						</div>	
-						<div class="col align-self-END">
-							<div class="data">22.11</div>
-						</div>
 					</div>
 					<div class="day"></div>
 				</div>
@@ -167,9 +170,6 @@
 						<div class="col align-self-start">
 							<div class="day-text">Сб</div>
 						</div>	
-						<div class="col align-self-END">
-							<div class="data">22.11</div>
-						</div>
 					</div>
 					<div class="day"></div>
 				</div>
@@ -181,9 +181,6 @@
 						<div class="col align-self-start">
 							<div class="day-text">Вс</div>
 						</div>	
-						<div class="col align-self-END">
-							<div class="data">22.11</div>
-						</div>
 					</div>
 						<div class="day"></div>
 					</div>
