@@ -64,11 +64,11 @@ class Group(db.Model):
 
 class Deadline(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    expiration_date = db.Column(db.DateTime, nullable=False)
+    expiration_date = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String, nullable=False)
     level_id = db.Column(db.Integer, db.ForeignKey('level.id'))
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'))
-    users_statuses = db.relationship('Deadline_status')
+    users_statuses = db.relationship('Deadline_status',backref='deadline')
 
 
 class Level(db.Model):
