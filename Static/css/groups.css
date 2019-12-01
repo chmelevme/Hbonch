@@ -11,7 +11,7 @@
 
 .columngroup {
 	background: #FFFFFF;
-	border-radius: 20px;
+	border-radius: 10px;
 	height: 100%;
 }
 
@@ -53,3 +53,63 @@
 	font-family: Montserrat;
 	font-size: 32px;
 }
+
+.crtit{
+	display: flex;
+	justify-content: start;
+
+}
+
+.a:active,
+.a:hover,  
+.a {
+  text-decoration: none;
+  color: #fff;
+}
+
+#submit{
+	border:0;
+	background-color: #90A2FF;
+	color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border-radius: 3px;
+}
+#submit:hover{
+	border:0;
+	background-color: #5873FF;
+	color: white;
+	transition-duration: 0.2s;
+}
+
+#name{
+	padding:10px;
+	width: 100%;
+	height:40px;
+	border-radius: 10px;
+	border-style: none;
+	background-color: #C4C4C4;
+}
+
+.modal-content{
+	background-color: #404040;
+}
+
+.modal-title{
+	color: white;
+	font-weight: 700;
+}
+
+.modal-text{
+	color: white;
+}
+
+.groups{
+	margin-top: 20px;
+}
+
+#name:focus, input:focus{
+    outline: none;
+    }
