@@ -17,7 +17,7 @@ svg{
 	height: 220px;
 	left: 146px;
 	top: 294px;
-	margin: 10px 0;
+	margin: 3px 0;
 	background: #F2F2F2;
 	border-radius: 15px;
 }
@@ -26,7 +26,7 @@ svg{
 	font-style: normal;
 	font-weight: normal;
 	font-size: 36px;
-	line-height: 44px;
+	line-height: 36px;
 	color: #F2F2F2;
 	padding: 20px 0 0 10px;
 }
@@ -48,7 +48,7 @@ svg{
 	font-style: normal;
 	font-weight: 800;
 	font-size: 58px;
-	line-height: 78px;
+	line-height: 58px;
 	color: #F2F2F2;
 }
 
@@ -68,7 +68,8 @@ svg{
 				-o-user-select: none;
 				-webkit-user-select: none;
 				user-select: none;
-	height: 51px;
+	height: 45px;
+	width: 50%;
 	background: #F2F2F2;
 	border-radius: 50px;
 	font-family: Montserrat;
