@@ -7,7 +7,7 @@ from sqlalchemy import update
 
 main = Blueprint('main', __name__, url_prefix='/main', template_folder='templates')
 
-
+@login_required
 @main.route('/index', methods=['GET', 'POST'])
 @main.route('/', methods=['GET', 'POST'])
 def main_route():
@@ -65,6 +65,8 @@ def main_route():
 def done(id):
     deadline = Deadline.query.filter_by(id=id).first()
     group_id = deadline.group_id
+    if Deadline_status.query.filter_by(deadline_id=deadline.id).first().status == 1:
+        return redirect(url_for('main.main_route'))
     if group_id != current_user.self_group.id:
         Deadline_status.query.filter_by(deadline_id=deadline.id).first().status = 1
         s = db.session.query(members).filter(members.c.group_id == group_id,

@@ -45,22 +45,61 @@
 	</div>
 	</div>
 </div>
+
+<!--<form action="" method="post" novalidate>
+		{{ form.hidden_tag() }}
+		{{form.name.label}}
+		{{form.name}}
+		{{form.submit}}
+</form>-->
+
+
+
 <div class="container groups">
+
+		<div class="crtit"><a href="#" data-toggle="modal" data-target="#Modal1" class="a">СОЗДАТЬ ГРУППУ</a></div>
+		<p></p>
+		<div class="modal fade" id="Modal1">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title">Создание группы</h3>
+					</div>
+					<form action="" method="post" novalidate>
+					{{ form.hidden_tag() }}	
+						<div class="modal-body"> 
+						
+							<div class="modal-text">Введите название</div> 
+							<div >
+								{{form.name}} <br>	
+							</div>
+						</div>
+		
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Отменить</button>
+							<div>
+								{{ form.submit }}	
+							</div>
+						</div>
+					</form>
+				</div> 
+			</div>
+		</div>
+
 	<div class="row">
 		{%for item in groups%}
-
 			<div class="col-4">
 				<div class="columngroup">
 					<div class="nameg">{{ item['name']}}</div>
 					<div class="invlink">{{item['url']}}</div>
-					<div class="userinf">{% for person in item['members'] %}
+					{% for person in item['members'] %}
+					<div class="userinf">
 							<div class="pers">{{person['user']}}</div>
 							<div class="perspoint">{{person['points']}}*</div>
-						{%endfor%}
 					</div>
+					{%endfor%}
 				</div>
 			</div>
-
 		{%endfor%}
 	</div>
 </div>

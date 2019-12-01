@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,redirect,url_for
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -22,4 +22,7 @@ def create_app(app_config=config):
     from main.routes import main
     app.register_blueprint(main)
     from webapp.models import User, Deadline, Level, Group, Deadline_status
+    @app.route('/',methods=['GET','POST'])
+    def index():
+        return redirect(url_for('auth.register'))
     return app
