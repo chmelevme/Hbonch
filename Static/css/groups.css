@@ -44,8 +44,12 @@
 
 .invlink{
 	padding: 5px;
+	height: auto;
+	width: 100%;
 	font-family: Montserrat;
 	background-color: rgb(177, 177, 177);
+	overflow: auto;
+	border-style: none;
 }
 
 .nameg{
