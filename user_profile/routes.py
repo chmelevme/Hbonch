@@ -31,7 +31,7 @@ def group():
         a['url']=Group.query.get(item).invite_link
         a['members']=get_users_from_group(item)
         response.append(a)
-        print(a)
+        
 
     print(response)
 

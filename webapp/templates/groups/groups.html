@@ -45,8 +45,45 @@
 	</div>
 	</div>
 </div>
+<div class="container groups">
+	<div class="row">
+		{%for item in groups%}
 
-		<div class="col-2 photo"></div>
+			<div class="col-4">
+				<div class="columngroup">
+					<div class="nameg">{{ item['name']}}</div>
+					<div class="invlink">{{item['url']}}</div>
+					<div class="userinf">{% for person in item['members'] %}
+							<div class="pers">{{person['user']}}</div>
+							<div class="perspoint">{{person['points']}}*</div>
+						{%endfor%}
+					</div>
+				</div>
+			</div>
+
+		{%endfor%}
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!--<div class="col-2 photo"></div>
 	</div>
 	<div class="container">
 		<div class="row ">
@@ -73,7 +110,7 @@
 		</div>
 	</div>
 
-	<h1>{{groups_id[0]}}</h1>
+	<h1>{groups_id[0]}</h1>
 
 
 
@@ -81,11 +118,14 @@
 
 <script type="text/javascript">
 var k=0;
-
+var z=0;
 
 
 function next_group(){
 	k++;
+	
+
+
 	alert({{ groups_id }}[k]);
 	z={{ groups_id }}[k];
 	$.ajax({	
@@ -102,7 +142,7 @@ function next_group(){
 
 
 $.ajax({	
-  url: 'groups/'+'{{groups_id[0]}}',
+  url: 'groups/'+'{groups_id[0]}',
   type: 'GET',
   datatype:'json',
   success: function(data) {
@@ -110,7 +150,7 @@ $.ajax({
   }
 
 });
-</script>
+</script>-->
 
 <script href="{{ url_for('static', filename='js/groups.js') }}"></script>
 </body>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,800,800i&display=swap');
+
 .text-group {
 	font-family: Montserrat;
 	font-style: italic;
@@ -7,10 +9,10 @@
 	color: #FFFFFF;
 }
 
-.groups {
+.columngroup {
 	background: #FFFFFF;
 	border-radius: 20px;
-	height: 644px;
+	height: 100%;
 }
 
 .link-photo {
@@ -29,4 +31,25 @@
 .lol img {
 	width: 45px;
 	height: 45px;
+}
+
+.userinf{
+	padding: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	font-family: Montserrat;
+	font-size: 20px;
+}
+
+.invlink{
+	padding: 5px;
+	font-family: Montserrat;
+	background-color: rgb(177, 177, 177);
+}
+
+.nameg{
+	padding:5px;
+	font-family: Montserrat;
+	font-size: 32px;
 }
