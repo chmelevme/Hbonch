@@ -19,14 +19,27 @@ def group():
         db.session.commit()
         group.create_link()
         db.session.commit()
-    groups = current_user.groups.filter(Group.id != current_user.self_group.id).join(members, (
-                members.c.group_id == Group.id)).add_column(Group.name).add_column(Group.invite_link).add_column(User.name).add_column(
-        members.c.points).order_by(members.c.points).all()
-    return render_template('groups/groups.html', groups_id=groups, form=form)
+    # groups = current_user.groups.filter(Group.id != current_user.self_group.id).join(members, (
+    #             members.c.group_id == Group.id)).add_column(Group.name).add_column(Group.invite_link).add_column(User.name).add_column(
+    #     members.c.points).order_by(members.c.points).all()
+    groups_id = [item.id for item in current_user.groups.filter(Group.id != current_user.self_group.id).all()]
+    print(groups_id)
+    response = []
+    for item in groups_id:
+        a = dict()
+        a['name']=Group.query.get(item).name
+        a['url']=Group.query.get(item).invite_link
+        a['members']=get_users_from_group(item)
+        response.append(a)
+        print(a)
+
+    print(response)
 
 
-@login_required
-@user_profile.route('/groups/<int:id>')
+    return render_template('groups/groups.html', groups=response, form=form)
+
+
+
 def get_users_from_group(id):
     group_rating = Group.query.get(id).members.join(members, (members.c.user_id == User.id)).add_column(
         members.c.points).add_column(User.name).order_by(members.c.points).all()
@@ -34,7 +47,7 @@ def get_users_from_group(id):
     for item in group_rating:
         a, b = item[1:3]
         json_d.append({'user': b, 'points': a})
-    return jsonify(data=json_d, group_link=Group.query.get(id).invite_link, group_name=Group.query.get(id).name)
+    return json_d
 
 
 @login_required
