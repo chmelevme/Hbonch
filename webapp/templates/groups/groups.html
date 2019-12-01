@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>Активные группы</title>
-	<link rel="stylesheet" href="../../../static/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../../../static/css/groups.css">
+<link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/groups.css') }}">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,800i&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,800i&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -31,7 +31,7 @@
 		<div class="dropdown lol">
  			<img src="../../../static/image/avatar_i.png" class="dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
  			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    			<a class="dropdown-item" href="{{ url_for('profile') }}">Профиль</a>
+    			<a class="dropdown-item" href="{{ url_for('profile.profile') }}">Профиль</a>
     			<a class="dropdown-item" href="{{ url_for('main.main_route') }}">Календарь</a>
     			<a class="dropdown-item" href="{{ url_for('auth.logout') }}">Выйти</a>
   			</div>
