@@ -20,6 +20,26 @@ svg{
 	margin: 3px 0;
 	background: #F2F2F2;
 	border-radius: 15px;
+	overflow: auto;
+	padding-top: 10px;
+}
+
+.day-item{
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+	background-color: #fff;
+}
+
+#r1{
+	background-color: #84FF79;
+}
+#r2{
+	background-color: #FDFFA5;
+}
+#r3{
+	background-color: #FFA5A5;
+}
 }
 .data {
 	font-family: Montserrat;
