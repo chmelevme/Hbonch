@@ -7,7 +7,7 @@ from sqlalchemy import update
 
 main = Blueprint('main', __name__, url_prefix='/main', template_folder='templates')
 
-
+@login_required
 @main.route('/index', methods=['GET', 'POST'])
 @main.route('/', methods=['GET', 'POST'])
 def main_route():

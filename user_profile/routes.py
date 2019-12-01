@@ -27,6 +27,11 @@ def group():
         a['url']=Group.query.get(item).invite_link
         a['members']=get_users_from_group(item)
         response.append(a)
+    print(response)
+    for person in response[0]['members']:
+        print(person['user'])
+
+
     return render_template('groups/groups.html', groups=response, form=form)
 
 
