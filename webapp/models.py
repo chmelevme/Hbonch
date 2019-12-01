@@ -64,7 +64,7 @@ class Group(db.Model):
 
 class Deadline(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    expiration_date = db.Column(db.DateTime, nullable=False)
+    expiration_date = db.Column(db.Integer, nullable=False)
     title = db.Column(db.String, nullable=False)
     level_id = db.Column(db.Integer, db.ForeignKey('level.id'))
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'))

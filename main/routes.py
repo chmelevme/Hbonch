@@ -4,6 +4,7 @@ from webapp.models import User, Group, Deadline_status, Level, Deadline
 from webapp import db
 from main.forms import create_deadline
 from datetime import datetime
+
 main = Blueprint('main', __name__, url_prefix='/main', template_folder='templates')
 
 
@@ -17,8 +18,8 @@ def main_route():
         group_name = form.group_name.data
         group = Group.query.filter_by(name=group_name).first()
         value = form.value.data
-        value = Level.query.filter_by(value=value)
-        deadline = Deadline(title=form.title.data, group=group)
+        value = Level.query.filter_by(value=value).first()
+        deadline = Deadline(title=form.title.data, group=group, expiration_date=form.expiration_date.data)
         value.deadlines.append(deadline)
         users = group.members.all()
         db.session.add(deadline)
@@ -27,8 +28,36 @@ def main_route():
             d_s = Deadline_status(user_id=user.id, deadline_id=deadline.id)
             db.session.add(d_s)
             db.session.commit()
+    Monday = Deadline_status.query.filter_by(user_id=current_user.id).join(Deadline).add_column(Deadline.id).add_column(
+        Deadline.title) \
+        .join(Level).add_column(Level.value).filter(Deadline.expiration_date == 1).all()
+    Tuesday = Deadline_status.query.filter_by(user_id=current_user.id).join(Deadline).add_column(
+        Deadline.id).add_column(
+        Deadline.title) \
+        .join(Level).add_column(Level.value).filter(Deadline.expiration_date == 2).all()
+    Wednesday = Deadline_status.query.filter_by(user_id=current_user.id).join(Deadline).add_column(
+        Deadline.id).add_column(
+        Deadline.title) \
+        .join(Level).add_column(Level.value).filter(Deadline.expiration_date == 3).all()
+    Thursday = Deadline_status.query.filter_by(user_id=current_user.id).join(Deadline).add_column(
+        Deadline.id).add_column(
+        Deadline.title) \
+        .join(Level).add_column(Level.value).filter(Deadline.expiration_date == 4).all()
+    Friday = Deadline_status.query.filter_by(user_id=current_user.id).join(Deadline).add_column(Deadline.id).add_column(
+        Deadline.title) \
+        .join(Level).add_column(Level.value).filter(Deadline.expiration_date == 5).all()
+    Saturday = Deadline_status.query.filter_by(user_id=current_user.id).join(Deadline).add_column(
+        Deadline.id).add_column(
+        Deadline.title) \
+        .join(Level).add_column(Level.value).filter(Deadline.expiration_date == 6).all()
+    Sunday = Deadline_status.query.filter_by(user_id=current_user.id).join(Deadline).add_column(Deadline.id).add_column(
+        Deadline.title) \
+        .join(Level).add_column(Level.value).filter(Deadline.expiration_date == 7).all()
+    print(Monday)
 
-    return render_template('main/kalendar.html', form=form, value=values, groups=groups)
+    return render_template('main/kalendar.html', form=form, value=values, groups=groups, monday=Monday,
+                           Thursday=Thursday, Wednesday=Wednesday, Friday=Friday, Saturday=Saturday, Sunday=Sunday,
+                           Tuesday=Tuesday)
 
 
 @login_required
