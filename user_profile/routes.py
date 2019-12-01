@@ -19,7 +19,7 @@ def group():
         db.session.commit()
         group.create_link()
         db.session.commit()
-    groups_id = {item.id for item in current_user.groups.filter(Group.id != current_user.self_group.id).all()}
+    groups_id = [item.id for item in current_user.groups.filter(Group.id != current_user.self_group.id).all()]
     return render_template('groups/groups.html', groups_id=groups_id, form=form)
 
 
