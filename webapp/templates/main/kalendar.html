@@ -112,8 +112,50 @@
             {{ form.title() }}
         </div>
         <br>
+        <div class="modal-text">
+        	<div class="dropdown open">
+			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			    Выберите день недели
+			  </button>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			    <a class="dropdown-item" href="#" onclick="d1()">Понедельник</a>
+			    <a class="dropdown-item" href="#" onclick="d2()">Вторник</a>
+			    <a class="dropdown-item" href="#" onclick="d3()">Среда</a>
+			    <a class="dropdown-item" href="#" onclick="d4()">Четверг</a>
+			    <a class="dropdown-item" href="#" onclick="d5()">Пятница</a>
+			    <a class="dropdown-item" href="#" onclick="d6()">Суббота</a>
+			    <a class="dropdown-item" href="#" onclick="d7()">Воскресенье</a>
+			  </div>
+			</div>
+			<script>
+        	function d1(){
+        		var a = 1;
+        	},
+        	function d2(){
+        		var a = 2;
+        	},
+        	function d3(){
+        		var a = 3;
+        	},
+        	function d4(){
+        		var a = 4;
+        	},
+        	function d5(){
+        		var a = 5;
+        	},
+        	function d6(){
+        		var a = 6;
+        	},
+        	function d7(){
+        		var a = 7;
+        	},
+        '{{form.value(size=32)}}' = a;
+        console.log('{{form.value(size=32)}}');
         
-  
+        </script>
+        </div>
+
+  		
 
       </div>
       <div class="modal-footer">
