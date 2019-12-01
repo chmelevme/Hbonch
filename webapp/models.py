@@ -5,6 +5,7 @@ from flask_login import UserMixin
 import jwt
 from config import config
 from datetime import datetime, timedelta
+from flask import url_for
 
 
 @login.user_loader
@@ -50,8 +51,9 @@ class Group(db.Model):
 
     def create_link(self):
         now = datetime.utcnow()
-        self.invite_link = jwt.encode({'id': str(self.id), 'exp': now + timedelta(minutes=10)}, config.SECRET_KEY,
-                                      algorithm='HS256').decode('utf-8')
+        invite_link_id = jwt.encode({'id': str(self.id), 'exp': now + timedelta(minutes=10)}, config.SECRET_KEY,
+                                    algorithm='HS256').decode('utf-8')
+        self.invite_link = 'http://127.0.0.1:5000/profile/invite/' + invite_link_id
 
     @staticmethod
     def verify_invite_link(token):
@@ -68,7 +70,7 @@ class Deadline(db.Model):
     title = db.Column(db.String, nullable=False)
     level_id = db.Column(db.Integer, db.ForeignKey('level.id'))
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'))
-    users_statuses = db.relationship('Deadline_status',backref='deadline')
+    users_statuses = db.relationship('Deadline_status', backref='deadline')
 
 
 class Level(db.Model):
