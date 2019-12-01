@@ -2,9 +2,13 @@
 <html>
 <head>
 	<title>Активные группы</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/kalendar.css') }}">
+	<link rel="stylesheet" href="../../../static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../../static/css/groups.css">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,800i&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,800i&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 </head>
 <body style="background-color: #404040">
@@ -21,8 +25,18 @@
 			</linearGradient>
 			</defs>
 	</svg>
-</div>
-</div>
+		</div>
+		<div class="col-2 photo">
+		<div class="dropdown lol">
+ 			<img src="../../../static/image/avatar_i.png" class="dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+ 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    			<a class="dropdown-item" href="#">Профиль</a>
+    			<a class="dropdown-item" href="#">Календарь</a>
+    			<a class="dropdown-item" href="#">Выйти</a>
+  			</div>
+		</div>
+	</div>
+	</div>
 </div>
 
 		<div class="col-2 photo"></div>
@@ -35,15 +49,24 @@
 			</div>
 		</div>
 		<div class="col-1 ml-5 my-2">
-			<div class="link">
-				<img src="../../../static/image/link 1.png">
+			<div class="dropdown">
+			<div  class="link-photo dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<img src="../../../static/image/link 1.png"  >
+			</div>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    			<a class="dropdown-item" href="#">Профильdasdadasdasd</a>
 			</div>
 		</div>
+
 	</div>
 	<div class="container">
-		<div class="row justify-content-center my-3">
+		<div class="row justify-content-center my-1">
 			<div class="col-6">
-				<div class="groups">
+				<div class="collapse my-1" id="collapseExample">
+  					<div class="card card-body">
+  					</div>
+				</div>
+				<div class="groups my-2">
 					GROUP
 				</div>
 			</div>
