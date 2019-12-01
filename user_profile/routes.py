@@ -25,7 +25,9 @@ def profile():
         .filter(Deadline_status.status < 2) \
         .join(Level).add_columns(Level.value).all()
 
-    points = db.session.query(members).filter_by(user_id=current_user.id, group_id=current_user.self_group.id).first().points
+    points = db.session.query(members).filter_by(user_id=current_user.id,
+                                                 group_id=current_user.self_group.id).first().points
 
     return render_template('account/profile.html', change_mail_form=change_mail_form, change_pass_form=change_pass_form,
-                           change_name_form=change_name_form, history=history, points=points)
+                           change_name_form=change_name_form, history=history, points=points,
+                           last_digit=current_user.id[-1])
